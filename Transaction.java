@@ -67,6 +67,7 @@ public class Transaction {
                 break;
 
             case 5:
+                Main.mainMenu();
                 return;
 
             default:

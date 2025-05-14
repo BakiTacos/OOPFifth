@@ -102,10 +102,11 @@ public class Admin {
                 break;
 
                 case 4: 
-                suggestionQueue.clear();
+                    suggestionQueue.clear();
                 break;
 
                 case 5:
+                    Main.mainMenu();
                     return;
 
                 default:
