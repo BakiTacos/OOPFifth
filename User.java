@@ -1,3 +1,5 @@
+
+
 class User {
     String username;
     String password;
@@ -7,6 +9,10 @@ class User {
     String cardType;
     String[] transactionHistory = new String[100];
     int jmlTransaction = 0;
+
+    WalletSystem userAccounts = new WalletSystem();
+
+    userAccounts.add
         
     public User(String username, String password, String cardNumber, String cardType, double balance) {
         this.username = username;
@@ -125,5 +131,9 @@ class User {
              System.out.println(transactionHistory[i]);
              }
          }
+     }
+
+     public String toString() {
+        return username;
      }
 }

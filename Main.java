@@ -2,11 +2,15 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner Scn = new Scanner(System.in);
+    WalletSystem userAccounts = new WalletSystem();
     static User[] users = new User[100];
     static int indexUser = -1;
     static SuggestionQueue suggestionQueue = new SuggestionQueue(100);
 
     public static void main(String[] args) {
+
+        
+
         users[0] = new User("Gallant", "666", "748249", "VISA", 5000);
         users[1] = new User("Arya", "69", "087775933022", "GPN", 10000);
         users[2] = new User("Marvin", "6969", "752831", "VISA", 0);
