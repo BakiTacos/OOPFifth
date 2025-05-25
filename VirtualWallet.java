@@ -73,6 +73,12 @@ public class VirtualWallet {
                 }
                 break;
 
+                case 3:
+                System.out.println("Thank you for using Aurea Virtual Wallet.");
+                System.exit(0);
+                scan.close();
+                break;
+
                 case 4:
                 bankUser.displayTest();
                 break;
