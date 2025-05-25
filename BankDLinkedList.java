@@ -12,7 +12,7 @@ public class BankDLinkedList<T> {
 
         Node(User data) {
             this.data = data;
-        }
+    }
     }
 
     public void Push(User data) {
@@ -31,26 +31,28 @@ public class BankDLinkedList<T> {
         if(head == null) {
             System.out.println("No User...");
             return null;
-        }
-    User PopUser = head.data;
-    head = head.next;
-
-    if(head != null) {
-        head.prev = null;
     }
-    return null;
+        
+        User PopUser = head.data;
+        head = head.next;
+
+        if(head != null) {
+            head.prev = null;
+    }
+            return null;
     }
 
     public User searchNode(String username, String password) {
         Node<T> current = head;
         while (current != null) {
-            if (current.data.getUsername().equals(username) &&
+        
+        if (current.data.getUsername().equals(username) &&
             current.data.getPass().equals(password)) {
-                return current.data;
-            }
+            return current.data;
+    }
             current = current.next;
-        }
-        return null;
+    }
+            return null;
     }
 
 
@@ -75,6 +77,32 @@ public class BankDLinkedList<T> {
     public void addUser(String name, String password, String username, String phoneNumber, double balance) {
         User new_user = new User(name, username, password, phoneNumber, balance);
         Push(new_user);
+    }
+
+    public boolean deleteUser(String username) {
+        Node<T> del = head;
+        while (del != null && !del.data.getUsername().equals(username)) {
+            del = del.next;
+            }
+
+        if (del == null) {
+            System.out.println("User not found.");
+            return false;
+        }
+
+        if (head == del) {
+            head = del.next;
+        }
+        
+        if (del.next != null) {
+            // then the previous node of the del will be the next del
+            del.next.prev = del.prev;
+        }
+        if (del.prev != null) {
+        del.prev.next = del.next;
+        }
+        System.out.println("Account deleted: " + username);
+        return true;
     }
 
     public void displayTest() {

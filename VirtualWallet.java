@@ -18,71 +18,103 @@ public class VirtualWallet {
 
         boolean login = false;
         // Login Interface
-        do {
+        do  {
         try {
-        System.out.println("\n── Welcome to Aurea Virtual Wallet ──");
-        System.out.println("| 1. Register                         |");
-        System.out.println("| 2. Login                            |");
-        System.out.println("| 3. Exit                             |");
-        System.out.println("───────────────────────────────────────");
+        System.out.println();
+        System.out.println("╔══════════════════════════════════════════════╗");
+        System.out.println("║        WELCOME TO AUREA VIRTUAL WALLET       ║");
+        System.out.println("╠══════════════════════════════════════════════╣");
+        System.out.println("║  1. Register                                 ║");
+        System.out.println("║  2. Login                                    ║");
+        System.out.println("║  3. Exit                                     ║");
+        System.out.println("╚══════════════════════════════════════════════╝");
         System.out.print("Choose your options: ");
         int choices = Integer.parseInt(scan.nextLine());
 
         switch (choices) {
             case 1:
-            System.out.print("Enter your Phone number: ");
+            System.out.println("\n╔════════════════════════════════╗");
+            System.out.println("║           REGISTER             ║");
+            System.out.println("╠════════════════════════════════╣");
+            System.out.print ("║ Phone Number (12 digits) : ");
             String phoneNumber = scan.nextLine();
-            if (bankSystem.isNumeric(phoneNumber) == true && bankSystem.is12Length(phoneNumber) == true) {
-            System.out.print("Enter your Full Name: ");
-            String name = scan.nextLine();
-             System.out.print("Enter your Username: ");
-            String username = scan.nextLine();
-            System.out.print("Enter your Password: ");
-            String password = scan.nextLine();
-            
-            if (bankSystem.validatePhoneNumbers(name, phoneNumber) == true) {
-            bankUser.addUser(name, password, username, phoneNumber, 0);
-            }
+
+            if (bankSystem.isNumeric(phoneNumber) && bankSystem.is12Length(phoneNumber)) {
+                System.out.print ("║ Full Name               : ║");
+                String name = scan.nextLine();
+                System.out.print ("║ Username                : ║");
+                String username = scan.nextLine();
+                System.out.print ("║ Password                : ║");
+                String password = scan.nextLine();
+                System.out.println("╚════════════════════════════════╝");
+
+                if (bankSystem.validatePhoneNumbers(name, phoneNumber)) {
+                    bankUser.addUser(name, password, username, phoneNumber, 0);
+                    System.out.println("\nRegistration successful! You can now login.");
+                } else {
+                    System.out.println("\nPhone number is already registered with another user.");
+                }
             } else {
-                System.out.println("Phone number must be numeric or 12 number");
+                System.out.println("╚════════════════════════════════╝");
+                System.out.println("\nPhone number must be numeric and exactly 12 digits.");
             }
             break;
             
             case 2:
-                System.out.print("Enter your Username: ");
+                System.out.println();
+                System.out.println("╔════════════════════════════╗");
+                System.out.println("║           LOGIN            ║");
+                System.out.println("╚════════════════════════════╝");
+
+                System.out.print("Enter Username: ");
                 String loginUsername = scan.nextLine();
-                System.out.print("Enter your Password: ");
+
+                System.out.print("Enter Password: ");
                 String loginPassword = scan.nextLine();
+
+                // Setelah input selesai, tampilkan dengan format rapi
+                System.out.println();
+                System.out.println("╔════════════════════════════╗");
+                System.out.println("║           LOGIN            ║");
+                System.out.println("╠════════════════════════════╣");
+                System.out.printf("║ Username : %-16s║\n", loginUsername);
+                System.out.printf("║ Password : %-16s║\n", "********");
+                System.out.println("╚════════════════════════════╝");
+
+
+
                 // Panggil loginUser dari StackLinkedList
                 User validateUser = bankUser.loginUser(loginUsername, loginPassword);
                 if (validateUser != null) {
-                    System.out.println("Login successful! Welcome, " + validateUser.getName());
+                    System.out.println("\nLogin successful! Welcome, " + validateUser.getName() + ".");
+                    Menu.currentUser = validateUser;
                     userMenu.userMenu();
                 } else {
-                    System.out.println("Login failed. Invalid username or password.");
+                    System.out.println("\nLogin failed. Invalid username or password.");
                 }
                 break;
 
-                case 3:
+
+            case 3:
                 System.out.println("Thank you for using Aurea Virtual Wallet...");
                 System.exit(0);
                 scan.close();
                 break;
 
-                case 4:
+            case 4:
                 bankUser.displayTest();
                 break;
 
             default:
-                System.out.println("Invalid choice. Please choose a valid option.");
-                }
+            System.out.println("Invalid choice. Please choose a valid option.");
             }
-                catch(InputMismatchException e) {
+            }
+            catch(InputMismatchException e) {
             System.out.println("Please input wth the correct procedure!");
             }
             catch(NumberFormatException e) {
             System.out.println("Please input wth the correct procedure!"); 
             }
-            } while (!login);
-        } 
+        } while (!login);
+    } 
 }

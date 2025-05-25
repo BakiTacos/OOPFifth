@@ -8,9 +8,10 @@ public class BankLogin {
     public static boolean is12Length(String str) {
         if (str.length() >= 11 && str.length() <= 12) {
             return true;
+
         } else {
-        return false;
-        }
+            return false;
+    }
     }
 
     public void addUserAccount(String name, String password, String username, String phoneNumber, double balance) {
@@ -20,4 +21,4 @@ public class BankLogin {
     public boolean validatePhoneNumbers(String name, String phoneNumber) {
         return bankDList.validatePhoneNumber(name, phoneNumber);
     }
-}
+    }
