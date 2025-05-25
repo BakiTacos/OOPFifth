@@ -16,4 +16,8 @@ public class BankLogin {
     public void addUserAccount(String name, String password, String username, String phoneNumber, double balance) {
         bankDList.addUser(name, password, username, phoneNumber, balance);
     }
+
+    public boolean validatePhoneNumbers(String name, String phoneNumber) {
+        return bankDList.validatePhoneNumber(name, phoneNumber);
+    }
 }

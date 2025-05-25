@@ -10,9 +10,7 @@ public class VirtualWallet {
 
     public static void main(String[] args) {
         //List storage
-
         //Dummy Test   
-
         bankUser.addUser("Array Pannadana", "pass123", "Array", "081288883333", 1000);
         bankUser.addUser("Nikki Tirta Iwan", "pass456", "Nikki", "081299992222", 2000);
         bankSystem.addUserAccount("Array Pannadana", "pass123", "Array", "081288883333", 1000);
@@ -42,7 +40,7 @@ public class VirtualWallet {
             System.out.print("Enter your Password: ");
             String password = scan.nextLine();
             
-            if (bankUser.validatePhoneNumber(name, phoneNumber) == true) {
+            if (bankSystem.validatePhoneNumbers(name, phoneNumber) == true) {
             bankUser.addUser(name, password, username, phoneNumber, 0);
             }
             } else {
