@@ -27,6 +27,20 @@ public class BankDLinkedList<T> {
         head = new_node;
     }
 
+    public User pop() {
+        if(head == null) {
+            System.out.println("No User...");
+            return null;
+        }
+    User PopUser = head.data;
+    head = head.next;
+
+    if(head != null) {
+        head.prev = null;
+    }
+    return null;
+    }
+
     public User searchNode(String username, String password) {
         Node<T> current = head;
         while (current != null) {
@@ -44,24 +58,23 @@ public class BankDLinkedList<T> {
         return searchNode(username, password);
     }
 
-    public boolean validateUsername(String username) {
+    public boolean validatePhoneNumber(String name, String phoneNumber) {
         Node<T> current = head;
 
         while (current != null) {
-            if (current.data.getUsername().equals(username)) {
-                System.out.println("Your username seems invalid. Please try another username.");
+            if (current.data.getPhoneNumber().equals(phoneNumber)) {
+                System.out.println("Your Phone Number is registered! Please log in with the account registered.");
                 return false;
             }
             current = current.next;
         }
-        System.out.printf("\nWelcome to Aurea %s!. Please log in with your account.", username);
+        System.out.printf("\nWelcome to Aurea %s!. Please log in with your account.", name);
         return true;
     }
 
-    public void addUser(String name, String password, String username, double balance) {
-        User new_user = new User(name, username, password, balance);
+    public void addUser(String name, String password, String username, String phoneNumber, double balance) {
+        User new_user = new User(name, username, password, phoneNumber, balance);
         Push(new_user);
-
     }
 
     public void displayTest() {

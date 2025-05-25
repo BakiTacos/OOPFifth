@@ -87,7 +87,7 @@ public class StackLinkedList<T>{
         }
 
         // Buat user baru dan masukkan ke stack
-        User newUser = new User(name, username, password, balance);
+        User newUser = new User(name, username, password, null, balance);
         push((T) newUser); // Casting ke T (User) dan push ke stack
 
     }        return true;

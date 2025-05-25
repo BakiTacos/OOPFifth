@@ -11,6 +11,9 @@ static Scanner scan = new Scanner(System.in);
 //
 
         public static void settingsMenu() {
+             boolean settingmenus = false;
+
+             do {
             try {
             System.out.println("─────────────────────────");
             System.out.println("|    Settings Menu       |");
@@ -48,6 +51,7 @@ static Scanner scan = new Scanner(System.in);
             System.out.println("Please input wth the correct procedure!");
             scan.nextLine(); 
         }
+     } while (!settingsmenu)
         
     } 
 

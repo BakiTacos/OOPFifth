@@ -11,12 +11,11 @@ public class VirtualWallet {
         //Dummy Test
         userStack.addUser("Array Pannadana", "pass123", "Array", 1000);
         userStack.addUser("Nikki Tirta Iwan", "pass456", "Nikki", 2000);
-        bankUser.addUser("Array Pannadana", "pass123", "Array", 1000);
-        bankUser.addUser("Nikki Tirta Iwan", "pass456", "Nikki", 2000);
+        bankUser.addUser("Array Pannadana", "pass123", "Array", "081288883333", 1000);
+        bankUser.addUser("Nikki Tirta Iwan", "pass456", "Nikki", "081299992222", 2000);
 
         boolean login = false;
         // Login Interface
-        
         do {
         try {
         System.out.println("\n── Welcome to Aurea Virtual Wallet ──");
@@ -27,20 +26,19 @@ public class VirtualWallet {
         System.out.print("Choose your options: ");
         int choices = Integer.parseInt(scan.nextLine());
 
-
-        
-    
         switch (choices) {
             case 1:
+            System.out.print("Enter your Phone number: ");
+            String phoneNumber = scan.nextLine();
             System.out.print("Enter your Full Name: ");
             String name = scan.nextLine();
+             System.out.print("Enter your Username: ");
+            String username = scan.nextLine();
             System.out.print("Enter your Password: ");
             String password = scan.nextLine();
-            System.out.print("Enter your Username: ");
-            String username = scan.nextLine();
-    
-            if (bankUser.validateUsername(username) == true) {
-            bankUser.addUser(name, password, username, 0);
+            
+            if (bankUser.validatePhoneNumber(name, phoneNumber) == true) {
+            bankUser.addUser(name, password, username, phoneNumber, 0);
             }
             break;
             
@@ -49,10 +47,8 @@ public class VirtualWallet {
                 String loginUsername = scan.nextLine();
                 System.out.print("Enter your Password: ");
                 String loginPassword = scan.nextLine();
-
                 // Panggil loginUser dari StackLinkedList
                 User validateUser = bankUser.loginUser(loginUsername, loginPassword);
-              
                 if (validateUser != null) {
                     System.out.println("Login successful! Welcome, " + validateUser.getName());
                     mainMenu(); // Pindah ke menu utama
@@ -78,6 +74,11 @@ public class VirtualWallet {
             } while (!login);
         }
 
+
+
+
+
+         
 
         // Menu Inferface
         public static void mainMenu() {
@@ -137,4 +138,7 @@ public class VirtualWallet {
             }
         }    
     }      
+    public static boolean isNumeric(String str) {
+        return str.matches("\\d+");
+    }
 }
