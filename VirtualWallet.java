@@ -4,27 +4,19 @@ import java.util.Scanner;
 public class VirtualWallet {
     static Scanner scan = new Scanner(System.in); // Untuk menjadikan scanner universal
     static StackLinkedList<User> userStack = new StackLinkedList<>();
+    static UserMenu userMenu = new UserMenu();
+    static BankLogin bankSystem = new BankLogin();
     static BankDLinkedList<User> bankUser = new BankDLinkedList<>();
 
-    public static boolean isNumeric(String str) {
-        return str.matches("\\d+");
-    }
-
-    public static boolean is12Length(String str) {
-        if (str.length() >= 11 && str.length() <= 12) {
-            return true;
-        } else {
-        return false;
-        }
-    }
     public static void main(String[] args) {
         //List storage
 
-        //Dummy Test
-        userStack.addUser("Array Pannadana", "pass123", "Array", 1000);
-        userStack.addUser("Nikki Tirta Iwan", "pass456", "Nikki", 2000);
+        //Dummy Test   
+
         bankUser.addUser("Array Pannadana", "pass123", "Array", "081288883333", 1000);
         bankUser.addUser("Nikki Tirta Iwan", "pass456", "Nikki", "081299992222", 2000);
+        bankSystem.addUserAccount("Array Pannadana", "pass123", "Array", "081288883333", 1000);
+        bankSystem.addUserAccount("Nikki Tirta Iwan", "pass456", "Nikki", "081299992222", 2000);
 
         boolean login = false;
         // Login Interface
@@ -42,7 +34,7 @@ public class VirtualWallet {
             case 1:
             System.out.print("Enter your Phone number: ");
             String phoneNumber = scan.nextLine();
-            if (isNumeric(phoneNumber) == true && is12Length(phoneNumber) == true) {
+            if (bankSystem.isNumeric(phoneNumber) == true && bankSystem.is12Length(phoneNumber) == true) {
             System.out.print("Enter your Full Name: ");
             String name = scan.nextLine();
              System.out.print("Enter your Username: ");
@@ -67,14 +59,14 @@ public class VirtualWallet {
                 User validateUser = bankUser.loginUser(loginUsername, loginPassword);
                 if (validateUser != null) {
                     System.out.println("Login successful! Welcome, " + validateUser.getName());
-                    mainMenu(); // Pindah ke menu utama
+                    userMenu.userMenu();
                 } else {
                     System.out.println("Login failed. Invalid username or password.");
                 }
                 break;
 
                 case 3:
-                System.out.println("Thank you for using Aurea Virtual Wallet.");
+                System.out.println("Thank you for using Aurea Virtual Wallet...");
                 System.exit(0);
                 scan.close();
                 break;
@@ -94,71 +86,5 @@ public class VirtualWallet {
             System.out.println("Please input wth the correct procedure!"); 
             }
             } while (!login);
-        }
-
-
-
-
-
-         
-
-        // Menu Inferface
-        public static void mainMenu() {
-        boolean running = true;
-
-        while (running){
-            try {
-            System.out.println("\n────────────────────────────");
-            System.out.println("|         Main Menu        |");
-            System.out.println("|──────────────────────────|");
-            System.out.println("| 1. Top-up                |"); // Untuk Top up dia memecah untuk menu top up
-            System.out.println("| 2. Withdraw              |");
-            System.out.println("| 3. Transfer              |"); // Memindahkan Uang ke akun lain (Method sendiri)
-            System.out.println("| 4. Check Balance         |"); // Mengecek jumlah uang yang dimiliki user (getBalance)
-            System.out.println("| 5. Transaction History   |"); // Melihat Sejarah Transaksi (Disimpan pake stack)
-            System.out.println("| 6. Settings              |"); // Untuk mengatur akun (Cek Prof,Change User,Change Pass)
-            System.out.println("| 7. Information           |"); // Melihat Informasi Bantuan (Sysout doang)
-            System.out.println("| 8. Logout                |"); // Keluar dari akun
-            System.out.println("────────────────────────────");
-            System.out.print("Choose your options: "); 
-            int menuChoice = scan.nextInt();
-
-            switch (menuChoice) {
-                case 1:
-                    //do Top up
-                    break;
-                case 2:
-                    //do withdraw
-                    break;
-                case 3:
-                    //do transfer
-                    break;
-                case 4:
-                    //check balance
-                    break;
-                case 5:
-                    //check transaction history
-                    break;
-                case 6:
-                    Menu.settingsMenu();
-                    break;
-                case 7:
-                    //Informations
-                    break;
-                case 8:
-                    System.exit(0);
-                    System.out.println("Loggin out...");
-                    running = false;
-                    break;
-                default:
-                    System.out.println("Invalid choice.");
-                }
-            }
-            catch(InputMismatchException e) {
-            System.out.println("Please input wth the correct procedure!");
-            scan.nextLine(); 
-            }
-        }    
-    }      
-    
+        } 
 }

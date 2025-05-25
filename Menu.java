@@ -15,25 +15,25 @@ static Scanner scan = new Scanner(System.in);
 
              do {
             try {
-            System.out.println("─────────────────────────");
-            System.out.println("|    Settings Menu       |");
-            System.out.println("|────────────────────────|");
-            System.out.println("| 1. Profile             |");
-            System.out.println("| 2. Change Username     |");
-            System.out.println("| 3. Change Password     |");
-            System.out.println("| 4. Show Login History  |");
-            System.out.println("| 5. Delete Account      |");
-            System.out.println("| 6. Back                |");
-            System.out.println("──────────────────────────");
+            System.out.println("╔══════════════════════════════╗");
+            System.out.println("║         Settings Menu        ║");
+            System.out.println("║══════════════════════════════║");
+            System.out.println("║ 1. Profile                   ║");
+            System.out.println("║ 2. Change Username           ║");
+            System.out.println("║ 3. Change Password           ║");
+            System.out.println("║ 4. Show Login History        ║");
+            System.out.println("║ 5. Delete Account            ║");
+            System.out.println("║ 6. Back                      ║");
+            System.out.println("╚══════════════════════════════╝");
             System.out.print("Choose your options: ");
             int choices = scan.nextInt();
             switch (choices) {
                 case 1:
-
+                    viewProfile();
                     break;
                 
                 case 2:
-
+                    
                     break;
                 
                 case 3:
@@ -51,21 +51,19 @@ static Scanner scan = new Scanner(System.in);
             System.out.println("Please input wth the correct procedure!");
             scan.nextLine(); 
         }
-     } while (!settingsmenu)
+     } while (!settingsmenu);
         
     } 
-
-
         public static void topUpMenu() {
-            System.out.println("───────────────────────");
-            System.out.println("|     Top Up Menu     |");
-            System.out.println("|─────────────────────|");
-            System.out.println("| 1. E-Wallet         |");
-            System.out.println("| 2. Pulsa            |");
-            System.out.println("| 3. Bank One-Click   |");
-            System.out.println("| 4. Minimarket       |");
-            System.out.println("| 5. Back             |");
-            System.out.println("───────────────────────");
+            System.out.println("╔══════════════════════════════╗");
+            System.out.println("║          Top Up Menu         ║");
+            System.out.println("║══════════════════════════════║");
+            System.out.println("║ 1. E-Wallet                  ║");
+            System.out.println("║ 2. Pulsa                     ║");
+            System.out.println("║ 3. Bank One-Click            ║");
+            System.out.println("║ 4. Minimarket                ║");
+            System.out.println("║ 5. Back                      ║");
+            System.out.println("╚══════════════════════════════╝");
             System.out.print("Choose your options: ");
             int choices = scan.nextInt();
             
@@ -103,15 +101,15 @@ static Scanner scan = new Scanner(System.in);
 
         //E-Wallet
         public static void eWalletMenu(){
-            System.out.println("───────────────────────");
-            System.out.println("|    Settings Menu    |");
-            System.out.println("|─────────────────────|");
-            System.out.println("| 1. OVO              |");
-            System.out.println("| 2. Go-Pay           |");
-            System.out.println("| 3. Shoppe-Pay       |");
-            System.out.println("| 3. Tokped-Pay       |");
-            System.out.println("| 4. Back             |");
-            System.out.println("───────────────────────");
+            System.out.println("╔══════════════════════════════╗");
+            System.out.println("║         Settings Menu        ║");
+            System.out.println("║══════════════════════════════║");
+            System.out.println("║ 1. OVO                       ║");
+            System.out.println("║ 2. Go-Pay                    ║");
+            System.out.println("║ 3. Shoppe-Pay                ║");
+            System.out.println("║ 4. Tokped-Pay                ║");
+            System.out.println("║ 5. Back                      ║");
+            System.out.println("╚══════════════════════════════╝");
             System.out.print("Choose your options: ");
             int choices = scan.nextInt();
             //Operasi Pop balance ke sini
@@ -142,15 +140,15 @@ static Scanner scan = new Scanner(System.in);
         }
         
         public static void pulsaMenu(){
-            System.out.println("────────────────────────");
-            System.out.println("|      Menu Pulsa      |");
-            System.out.println("|──────────────────────|");
-            System.out.println("| 1. Rp 25.000         |");
-            System.out.println("| 2. Rp 50.000         |");
-            System.out.println("| 3. Rp 100.000        |");
-            System.out.println("| 3. Rp 200.000        |");
-            System.out.println("| 4. Back              |");
-            System.out.println("────────────────────────");
+            System.out.println("╔══════════════════════════════╗");
+            System.out.println("║          Menu Pulsa          ║");
+            System.out.println("║══════════════════════════════║");
+            System.out.println("║ 1. Rp 25.000                 ║");
+            System.out.println("║ 2. Rp 50.000                 ║");
+            System.out.println("║ 3. Rp 100.000                ║");
+            System.out.println("║ 4. Rp 200.000                ║");
+            System.out.println("║ 5. Back                      ║");
+            System.out.println("╚══════════════════════════════╝");
             System.out.print("Choose your options: ");
             int choices = scan.nextInt();
             //Operasi Pop balance ke sini
@@ -255,6 +253,5 @@ static Scanner scan = new Scanner(System.in);
         System.out.print("Press enter to go back...");
         scan.nextLine(); // menunggu enter
         settingsMenu();
-}
-
+    }
 }
