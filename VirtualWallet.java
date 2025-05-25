@@ -5,6 +5,18 @@ public class VirtualWallet {
     static Scanner scan = new Scanner(System.in); // Untuk menjadikan scanner universal
     static StackLinkedList<User> userStack = new StackLinkedList<>();
     static BankDLinkedList<User> bankUser = new BankDLinkedList<>();
+
+    public static boolean isNumeric(String str) {
+        return str.matches("\\d+");
+    }
+
+    public static boolean is12Length(String str) {
+        if (str.length() >= 11 && str.length() <= 12) {
+            return true;
+        } else {
+        return false;
+        }
+    }
     public static void main(String[] args) {
         //List storage
 
@@ -30,6 +42,7 @@ public class VirtualWallet {
             case 1:
             System.out.print("Enter your Phone number: ");
             String phoneNumber = scan.nextLine();
+            if (isNumeric(phoneNumber) == true && is12Length(phoneNumber) == true) {
             System.out.print("Enter your Full Name: ");
             String name = scan.nextLine();
              System.out.print("Enter your Username: ");
@@ -39,6 +52,9 @@ public class VirtualWallet {
             
             if (bankUser.validatePhoneNumber(name, phoneNumber) == true) {
             bankUser.addUser(name, password, username, phoneNumber, 0);
+            }
+            } else {
+                System.out.println("Phone number must be numeric or 12 number");
             }
             break;
             
@@ -138,7 +154,5 @@ public class VirtualWallet {
             }
         }    
     }      
-    public static boolean isNumeric(String str) {
-        return str.matches("\\d+");
-    }
+    
 }
